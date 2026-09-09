@@ -41,21 +41,16 @@ jobs:
           chmod +x scripts/*.sh
           bash scripts/run-sonar-backend.sh
 
-      - name: Run frontend tests and lint
+      - name: Run frontend build and lint
         working-directory: frontend
         run: |
-          npm test -- --watch=false --coverage
+          npm run build
           npm run lint
 
       - name: Run frontend Sonar analysis
         env:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        working-directory: frontend
         run: |
-          npx sonar-scanner \
-            -Dproject.settings=sonar-project.properties \
-            -Dsonar.host.url="${SONAR_HOST_URL}" \
-            -Dsonar.token="${SONAR_TOKEN}" \
-            -Dsonar.qualitygate.wait=true \
-            -Dsonar.qualitygate.timeout=600
+          chmod +x scripts/*.sh
+          bash scripts/run-sonar-frontend.sh
