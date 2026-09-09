@@ -83,7 +83,7 @@ Rotate a credential by replacing it in Jenkins while retaining the ID expected b
 Create a Pipeline job named `MrJecks` and select **Pipeline script from SCM**:
 
 - SCM: Git
-- Repository: `https://github.com/SManousis/mr-jenk`
+- Repository: `https://github.com/Moriedhel/mr-jenk`
 - Credential: `github-mr-jenk-read`
 - Branch: `*/main`
 - Script path: `Jenkinsfile`
